@@ -1,0 +1,45 @@
+<div id="sidebar-menu">
+
+    <div id="sidebar-search">
+        <input type="text" placeholder="Search something..." class="autocomplete-input tooltip-button" data-placement="right" title="Type &apos;j&apos; to see the available tags..." name="">
+        <i class="glyph-icon icon-search"></i>
+    </div>
+    <ul>
+        <li>
+            <a href="index.html" title="Applications">
+                <i class="glyph-icon icon-linecons-tv"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+<?php
+foreach ($this->container as $page) {
+    $hasChildren = $page->hasPages();
+    if (!$hasChildren) {
+?>
+        <li>
+            <a href="<?php echo $page->getHref(); ?>" title="<?php echo $page->getLabel(); ?>">
+                <i class="glyph-icon icon-<?php echo $page->icon; ?>"></i>
+                <span><?php echo $page->getLabel(); ?></span>
+            </a>
+        </li>
+    <?php
+    } else {
+    ?>
+        <li <?php if($page->current) echo "class=overrideThisToUse" ?>>
+            <a href="<?php echo $page->getHref(); ?>"><i class="glyph-icon icon-<?php echo $page->icon; ?>"></i><span><?php echo $page->getLabel(); ?></span></a>
+            <ul>
+            <?php
+            foreach($page->getPages() as $child) {
+            ?>
+                <li><a href="<?php echo $child->getHref(); ?>"><?php echo $child->getLabel(); ?></a></li>
+            <?php
+            }
+            ?>
+            </ul>
+        </li>
+<?php
+    }
+}
+?>
+    </ul>
+ </div><!-- #sidebar-menu -->

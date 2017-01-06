@@ -1,0 +1,23 @@
+<div class="page-box">
+    <h3 class="page-title">
+        Edit User
+        <small>
+            modificate informatión
+        </small>
+    </h3>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <?php if (!empty($this->message)) { ?>
+                    <div class="alert alert-danger">
+                        <?php echo $this->message; ?>
+                    </div>
+                <?php } ?>
+                <div class="panel-body">
+                    <?php echo $this->form()->openTag($this->form); ?>
+                    <?php echo $this->renderForm($this->form); ?>
+                    <?php echo $this->form()->closeTag(); ?>
+                </div>
+        </div>
+    </div>
+</div>

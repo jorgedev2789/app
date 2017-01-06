@@ -1,0 +1,34 @@
+<?php if (!empty($this->message)) { ?>
+    <div class="alert alert-danger">
+        <?php echo $this->message; ?>
+    </div><br>
+<?php } ?>
+<?php echo $this->form()->openTag($this->form); ?>
+<div class="form-group">
+     <div class="input-group">
+        <?php
+        $username = $this->form->get('username');
+        echo $this->formRow()->setRenderErrors(false)->setInputErrorClass('parsley-error')->render($username);
+        ?>
+        <span class="input-group-addon bg-blue">
+            <i class="glyph-icon icon-envelope-o"></i>
+        </span>
+    </div>
+</div>
+<div class="form-group">
+     <div class="input-group">
+        <?php
+            $password = $this->form->get('password');
+            echo $this->formRow($password);
+        ?>
+        <span class="input-group-addon bg-blue">
+            <i class="glyph-icon icon-unlock-alt"></i>
+        </span>
+    </div>
+</div>
+<div class="form-group">
+    <a href="" title="Recover password">Forgot Your Password?</a>
+</div>
+<?php echo $this->formElement($this->form->get('submit')) ?>
+
+<?php echo $this->form()->closeTag(); ?>

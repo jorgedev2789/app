@@ -1,0 +1,60 @@
+<script>
+    $(document).ready(function() {
+       $('#grid').bootstrapTable({
+                method: 'POST',
+                url: '<?php echo $this->url('dash_user') ?>/list',
+                contentType: '',
+                pagination: true,
+                sidePagination:'server',
+                pageSize: 10,
+                queryParams:queryParams,
+                search: true,
+                showColumns: true,
+                showRefresh: true,
+                minimumCountColumns: 2,
+                clickToSelect: true
+        })
+        
+        function queryParams(params) {
+            return {
+                limit: params.limit,
+                offset: params.offset,
+                search: params.search,
+                name: params.sort,
+                order: params.order
+            };
+        }
+    });
+    
+    function actionsFormatter(value, row){
+        var btn = '<a href="<?php echo $this->url('dash_user_edit') ?>/'+row.id+'" title="Edit"><i class="glyph-icon icon-pencil"></i></a> '
+        btn += '&nbsp;<a href="<?php echo $this->url('dash_user_del') ?>/'+row.id+'" rel="delete" title="Delete"><i class="glyph-icon icon-remove"></i></a>';
+        return btn;
+    }
+</script>
+<div class="page-box">
+    <h3 class="page-title">
+        Users
+        <small>
+            all the users for the application
+        </small>
+    </h3>
+        <div class="example-box-wrapper">
+
+            <table class="table" id="grid" data-method  ="post">
+                <thead>
+                    <tr>
+                        <th data-field="id">#Id</th>
+                        <th data-field="full_name">Fullname</th>
+                        <th data-field="username">Username</th>
+                        <th data-field="email">Email</th>
+                        <th data-switchable="false" data-formatter="actionsFormatter" data-halign="center" data-align="center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+        
+    </div>
+</div>

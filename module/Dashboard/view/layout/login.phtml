@@ -1,0 +1,87 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('System '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/admin/assets-minified/all-demo.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/admin/assets-minified/js-core.js')
+        ; ?>
+        <script type="text/javascript">
+            $(window).load(function(){
+                setTimeout(function() {
+                    $('#loading').fadeOut( 400, "linear" );
+                }, 300);
+            });
+        </script>
+        <style>
+            #loading {position: fixed;width: 100%;height: 100%;left: 0;top: 0;right: 0;bottom: 0;display: block;background: #fff;z-index: 10000;}
+            #loading img {position: absolute;top: 50%;left: 50%;margin: -23px 0 0 -23px;}
+        </style>
+    </head>
+    <body>
+        <div id="loading"><img src="<?php echo $this->basePath('admin/images/spinner/loader-dark.gif') ?>" alt="Loading..."></div>
+        <style type="text/css">
+
+            body {
+                background: #fff;
+                overflow: hidden;
+                height: 100% !important;
+            }
+
+        </style>
+
+        <script type="text/javascript" src="<?php echo $this->basePath() ?>/assets/widgets/wow/wow.js"></script>
+        <script type="text/javascript">
+            /* WOW animations */
+
+            wow = new WOW({
+                animateClass: 'animated',
+                offset: 100
+            });
+            wow.init();
+        </script>
+
+        <img src="<?php echo $this->basePath('assets/dummy-images/bg31.jpg') ?>" class="login-img wow fadeIn" alt="">
+
+        <div class="center-vertical">
+            <div class="center-content">
+
+                <div class="col-md-3 center-margin">
+
+                    <form method="post" action="">
+                        <div class="content-box wow bounceInDown modal-content">
+                            <h3 class="content-box-header content-box-header-alt bg-default">
+                                <span class="icon-separator">
+                                    <i class="glyph-icon icon-cog"></i>
+                                </span>
+                                <div class="header-wrapper">
+                                    <h2>LA FAKTORIA</h2>
+                                    <small>System control</small>
+                                </div>
+                            </h3>
+                            <div class="content-box-wrapper">
+                                <?php echo $this->content; ?>
+                                
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <script type="text/javascript" src="<?php echo $this->basePath() ?>/admin/assets-minified/all-demo.js"></script>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
